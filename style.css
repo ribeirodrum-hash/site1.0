@@ -59,7 +59,7 @@ header {
 
 header::before {
     content: '';
-    width: 480px;
+    width: 0;
     flex-shrink: 0;
     position: relative;
     z-index: 1;
@@ -93,12 +93,18 @@ header::before {
 }
 
 nav {
-    display: flex;
-    gap: 36px;
     position: relative;
     z-index: 2;
-    margin-left: auto;
-    margin-top: 45px;
+
+    margin: 45px auto 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: fit-content;
+
+    gap: clamp(40px, 4vw, 70px);
 }
 
 nav a {
@@ -178,14 +184,17 @@ section {
 
 .hero-content {
     width: 100%;
-    max-width: 1280px;
+    max-width: 1400px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
-    align-items: center;
+    align-items: start;
+    padding-top: 40px;
 }
-
+.hero-text {
+    padding-top: 102px;
+}
 .hero-eyebrow {
     font-size: 12px;
     font-weight: 600;
@@ -231,14 +240,22 @@ section {
     color: var(--black);
     box-shadow: 0 0 30px var(--gold-glow);
 }
+.hero-image-frame{
+    position:relative;
+    width:100%;
+    aspect-ratio:16 / 10;
+    overflow:hidden;
 
-.hero-image-frame {
-    position: relative;
-    overflow: hidden;
-    aspect-ratio: 16 / 9;
-     max-height: 52vh;
+    margin-top:70px;
+
+    border:1px solid rgba(212,175,55,.25);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#000;
 }
-
 .hero-image-frame::before {
     content: '';
     position: absolute;
@@ -265,10 +282,11 @@ section {
 }
 
 .hero-image-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center;
+    background:#000;
     display: block;
     filter: grayscale(100%) contrast(1.05);
     transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter var(--transition);
@@ -278,15 +296,113 @@ section {
     transform: scale(1.03);
     filter: grayscale(80%) contrast(1.08);
 }
+/* ===========================
+SOBRE
+=========================== */
+
+.sobre{
+    max-width:1400px;
+    margin:0 auto;
+    padding:120px 60px;
+    display:grid;
+    grid-template-columns:460px 1fr;
+    gap:80px;
+    align-items:center;
+}
+
+.sobre-imagem{
+    position:relative;
+}
+
+.sobre-imagem img{
+    width:100%;
+    display:block;
+    border:1px solid rgba(212,175,55,.25);
+    filter:grayscale(100%);
+}
+
+.sobre-texto{
+    max-width:700px;
+}
+
+.section-tag{
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:.25em;
+    font-size:12px;
+    margin-bottom:18px;
+}
+
+.sobre-texto h2{
+    font-family:var(--font-display);
+    color:var(--gold);
+    font-size:clamp(2.8rem,5vw,4.8rem);
+    font-weight:300;
+    line-height:.95;
+    margin-bottom:32px;
+}
+
+.sobre-texto p{
+    color:var(--gray);
+    font-size:16px;
+    line-height:1.9;
+    margin-bottom:22px;
+}
+
+.sobre-formacao{
+    margin-top:50px;
+    padding-top:30px;
+    border-top:1px solid rgba(212,175,55,.20);
+}
+
+.sobre-formacao h3{
+    color:var(--gold);
+    font-size:13px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    margin-bottom:20px;
+}
+
+.sobre-formacao ul{
+    list-style:none;
+    padding:0;
+}
+
+.sobre-formacao li{
+    color:var(--gray);
+    margin-bottom:12px;
+    line-height:1.6;
+}
+
+.sobre-formacao li::before{
+    content:"— ";
+    color:var(--gold);
+}
 
 /* ===========================
    FILMOGRAFIA
 =========================== */
 
 .filmografia {
-    padding: 100px 60px 120px;
+    padding: 120px 60px 120px;
+    border-top: 1px solid rgba(212,175,55,.25);
     max-width: 1400px;
     margin: 0 auto;
+}
+.filmografia-header{
+    max-width: 1400px;
+    margin: 0 auto 70px;
+    text-align: center;
+}
+
+.filmografia-header h2{
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    font-weight: 300;
+    color: var(--gold);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    line-height: 1;
 }
 
 .filmografia-grid {
@@ -441,18 +557,26 @@ section {
         0 28px 72px rgba(0, 0, 0, 0.8),
         0 0 50px rgba(212, 175, 55, 0.25);
 }
-
-.demo-player video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+.demo-player-link{
+    position:absolute;
+    inset:0;
+    display:block;
+    cursor:pointer;
+    z-index:3;
 }
 
-.demo-player.is-playing video {
-    object-fit: contain;
-    background: var(--black);
+.demo-player-link img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .6s ease;
 }
+
+.demo-player:hover .demo-player-link img{
+    transform:scale(1.04);
+}
+
 
 .demo-play-btn {
     position: absolute;
@@ -1016,3 +1140,272 @@ section {
     font-weight:300;
 
 }
+
+/* ===========================
+   DEMO MODAL
+=========================== */
+
+.demo-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.92);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    padding:40px;
+}
+
+.demo-modal.active{
+    display:flex;
+}
+
+.demo-modal-content{
+    width:min(1100px,95vw);
+    aspect-ratio:16/9;
+    position:relative;
+}
+
+.demo-modal iframe{
+    width:100%;
+    height:100%;
+    border:none;
+    border-radius:12px;
+}
+
+.demo-close{
+    position:absolute;
+    top:-50px;
+    right:0;
+    background:none;
+    border:none;
+    color:#d4af37;
+    font-size:34px;
+    cursor:pointer;
+}
+
+.demo-close:hover{
+    transform:scale(1.1);
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width:768px){
+
+    :root{
+        --header-h:90px;
+    }
+    
+    /* ================= HEADER ================= */
+    
+    header{
+        padding:18px 14px;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        gap:14px;
+    }
+    
+    header::before{
+        display:none;
+    }
+    
+    .logo-video{
+        height:80px;
+        top:0;
+    }
+    
+    nav{
+        width:100%;
+        margin:8px 0 0;
+        display:flex;
+        justify-content:space-evenly;
+        align-items:center;
+        gap:8px;
+    }
+    
+    nav a{
+        font-size:12px;
+        letter-spacing:.08em;
+    }
+    
+    /* ================= HERO ================= */
+    
+    .hero{
+        padding:110px 20px 40px;
+        min-height:auto;
+    }
+    
+    .hero-content{
+        display:flex;
+        flex-direction:column;
+        gap:24px;
+    }
+    
+    .hero-text{
+
+        order:1;
+    
+        width:100%;
+        max-width:360px;
+    
+        margin:0 auto;
+    
+        padding-top:0;
+    
+        text-align:center;
+    
+    }
+    .hero h1{
+
+        font-size:56px;
+        line-height:.9;
+    
+        width:100%;
+        text-align:center;
+    
+        margin:0 auto;
+    
+    }
+    
+    .hero-image{
+        order:2;
+    }
+    
+    .hero-image-frame{
+        margin:12px auto 0;
+        width:100%;
+        max-width:370px;
+        aspect-ratio:16/10;
+    }
+    
+    .hero h1{
+        font-size:56px;
+        line-height:.9;
+    }
+    .hero-eyebrow{
+
+        margin-top:18px;
+        margin-bottom:10px;
+    
+        font-size:14px;
+        letter-spacing:.22em;
+    
+    }
+    .hero-subtitle{
+
+        margin-top:6px;
+    
+        font-size:15px;
+        line-height:1.8;
+    
+        max-width:320px;
+        margin-left:auto;
+        margin-right:auto;
+    
+    }
+    
+    /* ================= SOBRE ================= */
+    
+    .sobre{
+        display:flex;
+        flex-direction:column;
+        padding:60px 20px;
+        gap:28px;
+    }
+    
+    .sobre-imagem img{
+        width:100%;
+    }
+    
+    .sobre-texto{
+        max-width:100%;
+        text-align:center;
+    }
+    
+    .sobre-texto h2{
+        font-size:52px;
+    }
+    
+    .sobre-formacao{
+        text-align:left;
+    }
+    
+    /* ================= FILMOGRAFIA ================= */
+    
+    .filmografia{
+        padding:80px 20px;
+    }
+    
+    .filmografia-header{
+        margin-bottom:40px;
+    }
+    .filmografia-header h2{
+
+        font-size:clamp(2.6rem, 8vw, 3.4rem);
+        text-align:center;
+    
+    }
+    
+    .filmografia-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:18px;
+    }
+    
+    .filme-meta{
+        text-align:center;
+    }
+    
+    .filme-meta h3{
+        font-size:18px;
+    }
+    
+    /* ================= DEMO ================= */
+    
+    .demo{
+        padding:80px 20px;
+    }
+    
+    .demo-player{
+        width:100%;
+    }
+    
+    /* ================= EQUIPAMENTOS ================= */
+    
+    .equipamentos{
+        padding:80px 20px;
+    }
+    
+    .equipamentos-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:16px;
+    }
+    
+    .equip-card{
+        padding:18px;
+    }
+    
+    /* ================= CONTATO ================= */
+    
+    .contato{
+        padding:80px 20px;
+    }
+    
+    .contato-inner{
+        padding:40px 20px;
+    }
+    
+    .site-footer{
+        padding:30px 20px;
+    }
+    .section-tag{
+
+        text-align:center;
+        margin-bottom:22px;
+    
+    }
+    
+    }

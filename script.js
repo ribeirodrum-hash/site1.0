@@ -17,26 +17,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealElements.forEach((el) => revealObserver.observe(el));
 
-    /* Demo Reel — play button */
-    const demoPlayer = document.getElementById('demoPlayer');
-    const demoVideo = document.getElementById('demoVideo');
-    const demoPlayBtn = document.getElementById('demoPlayBtn');
+   /* Demo Reel Modal */
 
-    if (demoPlayer && demoVideo && demoPlayBtn) {
+   const demoPlayer = document.getElementById("demoPlayer");
+const demoModal = document.getElementById("demoModal");
+const demoFrame = document.getElementById("demoFrame");
+const demoClose = document.getElementById("demoClose");
 
-        demoPlayBtn.addEventListener('click', () => {
-            demoVideo.setAttribute('controls', '');
-            demoPlayer.classList.add('is-playing');
-            demoPlayBtn.classList.add('hidden');
-            demoVideo.play();
-        });
+if (demoPlayer && demoModal && demoFrame && demoClose) {
 
-        demoVideo.addEventListener('ended', () => {
-            demoVideo.removeAttribute('controls');
-            demoPlayer.classList.remove('is-playing');
-            demoPlayBtn.classList.remove('hidden');
-        });
-    }
+    demoPlayer.addEventListener("click", (e) => {
+
+        e.preventDefault();
+
+        demoFrame.src =
+            "https://www.youtube.com/embed/16HTqtiDRrc?autoplay=1&rel=0";
+
+        demoModal.classList.add("active");
+
+    });
+
+    demoClose.addEventListener("click", () => {
+
+        demoModal.classList.remove("active");
+        demoFrame.src = "";
+
+    });
+
+    demoModal.addEventListener("click", (e) => {
+
+        if (e.target === demoModal) {
+
+            demoModal.classList.remove("active");
+            demoFrame.src = "";
+
+        }
+
+    });
+
+    document.addEventListener("keydown", (e) => {
+
+        if (e.key === "Escape") {
+
+            demoModal.classList.remove("active");
+            demoFrame.src = "";
+
+        }
+
+    });
+
+}
 
     /* Nav active state on scroll */
     const sections = document.querySelectorAll('section[id]');

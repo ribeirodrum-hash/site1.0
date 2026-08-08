@@ -36,47 +36,85 @@
 
 </header>
 
-<section class="hero" id="sobre">
+<section class="hero" id="inicio">
 
     <div class="hero-content">
 
         <div class="hero-text reveal">
-            <p class="hero-eyebrow">Sound Designer</p>
             <h1>
                 RICARDO<br>
                 RIBEIRO
             </h1>
+            <p class="hero-eyebrow">Sound Designer</p>
             <p class="hero-subtitle">
                 Som Direto &bull; Pós-produção de Áudio &bull; Mixagem Final
             </p>
-            <a href="#filmografia" class="botao">Ver Filmografia</a>
+        
         </div>
   
         <div class="hero-image reveal reveal-delay">
             <div class="hero-image-frame">
-                <div class="hero-image reveal reveal-delay">
-
-                    <div class="hero-image-frame">
-                
-                        <img src="assets/images/hero.jpg" alt="Ricardo Ribeiro em set de filmagem">
-                
-                        <div class="hero-gallery-overlay">
-                
-                            <span class="gallery-title">
-                                GALERIA
-                            </span>
-                
-                            <p class="gallery-subtitle">
-                                Clique para explorar
-                            </p>
-                
-                        </div>
-                
-                    </div>
-                
-                </div>
+        
                 <img src="assets/images/hero.jpg" alt="Ricardo Ribeiro em set de filmagem">
+        
+                <div class="hero-gallery-overlay">
+                    <span class="gallery-title">
+                        GALERIA
+                    </span>
+        
+                    <p class="gallery-subtitle">
+                        Clique para explorar
+                    </p>
+                </div>
+        
             </div>
+        </div>
+                
+ 
+</section>
+<section class="sobre" id="sobre">
+
+    <div class="sobre-imagem reveal">
+        <img src="assets/images/sobre.jpg" alt="Ricardo Ribeiro">
+    </div>
+
+    <div class="sobre-texto reveal reveal-delay">
+        <p class="section-tag">
+            SOBRE
+        </p>
+
+
+        <h2>O som também conta histórias.</h2>
+
+        <p>
+            Sou sound designer e profissional de pós-produção de áudio para cinema,
+            documentários e publicidade. Atuo em edição de diálogos, restauração de
+            áudio, sound design, mixagem final e captação de som direto, buscando
+            sempre fortalecer a narrativa através do som.
+        </p>
+
+        <p>
+            Atualmente curso Bacharelado em Cinema e Audiovisual pela Universidade
+            Unicesumar e complemento minha formação por meio de especializações em
+            trilha sonora, pós-produção de áudio e restauração sonora para cinema.
+        </p>
+
+        <h3>Formação</h3>
+
+<ul>
+    <li><strong>Bacharelado em Cinema e Audiovisual</strong> — Universidade Unicesumar (em andamento)</li>
+
+    <li><strong>Trilha Sonora para Cinema e TV</strong> — Academia Internacional de Cinema (AIC)</li>
+
+    <li><strong>Pós de Som Desvendado (Audiodidata)</strong> — Pedro Coelho</li>
+
+    <li><strong>Captação de Som Direto para Cinema, TV e Publicidade</strong> — Jeymes Cabala (Udemy)</li>
+
+    <li><strong>Produção Musical para Cinema</strong> — Domestika</li>
+
+    <li><strong>Restauração e Limpeza de Áudio com iZotope RX</strong> — Fernando Santana do Amaral</li>
+         </ul>
+
         </div>
 
     </div>
@@ -84,6 +122,11 @@
 </section>
 <section id="filmografia">
 
+    <div class="filmografia-header">
+
+        <h2>FILMOGRAFIA</h2>
+
+    </div>
 
     <div class="filmografia-grid">
 
@@ -245,14 +288,17 @@
 
         <div class="demo-player" id="demoPlayer">
 
-            <video id="demoVideo" preload="metadata" playsinline>
-                <source src="assets/demo/demo-reel.mp4" type="video/mp4">
-            </video>
+            <div class="demo-player-link">
 
-            <button class="demo-play-btn" id="demoPlayBtn" aria-label="Reproduzir Demo Reel">
-                <span class="play-icon"></span>
-                <span class="play-label">Assistir</span>
-            </button>
+    <img src="assets/images/demo-thumb.jpg"
+         alt="Demo Reel Ricardo Ribeiro">
+
+    <div class="demo-play-btn">
+        <span class="play-icon"></span>
+        <span class="play-label">ASSISTIR</span>
+    </div>
+
+</div>
 
         </div>
 
@@ -375,7 +421,28 @@
 </section>
 
 <footer class="site-footer">
-    <p>&copy; 2026 Ricardo Ribeiro — Sound Designer</p>
+  <!-- Modal Demo Reel -->
+
+<div id="demoModal" class="demo-modal">
+
+    <div class="demo-modal-content">
+
+        <button class="demo-close" id="demoClose">
+            ✕
+        </button>
+
+        <iframe
+            id="demoFrame"
+            src=""
+            title="Demo Reel Ricardo Ribeiro"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+</div>
 </footer>
 
 <script src="script.js"></script>
