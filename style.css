@@ -235,8 +235,8 @@ section {
 .hero-image-frame {
     position: relative;
     overflow: hidden;
-    aspect-ratio: 3 / 4;
-    max-height: 82vh;
+    aspect-ratio: 4 / 3;
+max-height: 68vh;
 }
 
 .hero-image-frame::before {
